@@ -106,6 +106,7 @@ end
 
 % ================== CONFIGURABLES FOR EACH HOMEWORK ==================
 
+<<<<<<< HEAD
 function id = homework_id()
   id = '1';
 end
@@ -118,10 +119,25 @@ function [partNames] = validParts()
                 'Computing Cost (for multiple variables)', ...
                 'Gradient Descent (for multiple variables)', ...
                 'Normal Equations'};
+=======
+function id = homework_id() 
+  id = '2';
+end
+
+function [partNames] = validParts()
+  partNames = { 'Sigmoid Function ', ...
+                'Logistic Regression Cost', ...
+                'Logistic Regression Gradient', ...
+                'Predict', ...
+                'Regularized Logistic Regression Cost' ...
+                'Regularized Logistic Regression Gradient' ...
+                };
+>>>>>>> b824923695585797ead72efea82d8b6ad1c56fed
 end
 
 function srcs = sources()
   % Separated by part
+<<<<<<< HEAD
   srcs = { { 'warmUpExercise.m' }, ...
            { 'computeCost.m' }, ...
            { 'gradientDescent.m' }, ...
@@ -130,10 +146,19 @@ function srcs = sources()
            { 'gradientDescentMulti.m' }, ...
            { 'normalEqn.m' }, ...
          };
+=======
+  srcs = { { 'sigmoid.m' }, ...
+           { 'costFunction.m' }, ...
+           { 'costFunction.m' }, ...
+           { 'predict.m' }, ...
+           { 'costFunctionReg.m' }, ...
+           { 'costFunctionReg.m' } };
+>>>>>>> b824923695585797ead72efea82d8b6ad1c56fed
 end
 
 function out = output(partId, auxstring)
   % Random Test Cases
+<<<<<<< HEAD
   X1 = [ones(20,1) (exp(1) + exp(2) * (0.1:0.1:2))'];
   Y1 = X1(:,2) + sin(X1(:,1)) + cos(X1(:,2));
   X2 = [X1 X1(:,2).^0.5 X1(:,2).^0.25];
@@ -155,6 +180,28 @@ function out = output(partId, auxstring)
   end 
 end
 
+=======
+  X = [ones(20,1) (exp(1) * sin(1:1:20))' (exp(0.5) * cos(1:1:20))'];
+  y = sin(X(:,1) + X(:,2)) > 0;
+  if partId == 1
+    out = sprintf('%0.5f ', sigmoid(X));
+  elseif partId == 2
+    out = sprintf('%0.5f ', costFunction([0.25 0.5 -0.5]', X, y));
+  elseif partId == 3
+    [cost, grad] = costFunction([0.25 0.5 -0.5]', X, y);
+    out = sprintf('%0.5f ', grad);
+  elseif partId == 4
+    out = sprintf('%0.5f ', predict([0.25 0.5 -0.5]', X));
+  elseif partId == 5
+    out = sprintf('%0.5f ', costFunctionReg([0.25 0.5 -0.5]', X, y, 0.1));
+  elseif partId == 6
+    [cost, grad] = costFunctionReg([0.25 0.5 -0.5]', X, y, 0.1);
+    out = sprintf('%0.5f ', grad);
+  end 
+end
+
+
+>>>>>>> b824923695585797ead72efea82d8b6ad1c56fed
 % ====================== SERVER CONFIGURATION ===========================
 
 % ***************** REMOVE -staging WHEN YOU DEPLOY *********************
